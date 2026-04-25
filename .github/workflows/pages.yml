@@ -1,6 +1,7 @@
 # Deploy static build to GitHub Pages (Vite dist/).
 #
-# After merge: GitHub → Settings → Pages → Build and deployment → Source: GitHub Actions.
+# First time: GitHub → Settings → Pages → Source: GitHub Actions (required before deploy succeeds).
+# Do not use actions/configure-pages here: it 404s until Pages is already enabled.
 # The site is public; for real access control use Cloudflare Access, private Pages (paid), etc.
 # Client-side-only "passwords" do not protect the shipped files.
 
@@ -30,7 +31,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
