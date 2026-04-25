@@ -1,8 +1,15 @@
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
-/** Project Pages live at https://<user>.github.io/wttracker/ — must match the repo name. */
-const base = process.env.GITHUB_ACTIONS === 'true' ? '/wttracker/' : '/'
+/**
+ * Project Pages base path:
+ * - local dev: '/'
+ * - GitHub Actions: '/<repo-name>/'
+ */
+const base =
+  process.env.GITHUB_ACTIONS === 'true'
+    ? `/${(process.env.GITHUB_REPOSITORY ?? '').split('/')[1] ?? 'wttracker'}/`
+    : '/'
 
 export default defineConfig({
   base,
