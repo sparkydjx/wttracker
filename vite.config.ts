@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+/** Project Pages live at https://<user>.github.io/wttracker/ — must match the repo name. */
+const base = process.env.GITHUB_ACTIONS === 'true' ? '/wttracker/' : '/'
+
 export default defineConfig({
+  base,
   server: {
     port: 4173,
   },
@@ -20,8 +24,8 @@ export default defineConfig({
         background_color: '#0e1018',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
-        scope: '/',
+        start_url: base,
+        scope: base,
         icons: [
           {
             src: 'pwa-192x192.png',
