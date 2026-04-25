@@ -1,0 +1,25 @@
+{
+  "name": "wttracker",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0 <21 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.2",
+    "vite": "^7.3.2",
+    "vite-plugin-pwa": "^1.2.0"
+  },
+  "overrides": {
+    "rollup": "npm:@rollup/wasm-node@4.60.2"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1"
+  }
+}
