@@ -22,7 +22,7 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'icons.svg'],
+      includeAssets: ['favicon.svg', 'icons.svg', 'apple-touch-icon.png'],
       manifest: {
         name: 'WT Tracker',
         short_name: 'WT Tracker',

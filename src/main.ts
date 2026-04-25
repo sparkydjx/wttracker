@@ -634,6 +634,19 @@ function parseDateInputValue(raw: string): Date | null {
   return parseDateParts(year, month, day)
 }
 
+function formatDateDigits(raw: string): string {
+  const digits = raw.replace(/\D/g, '').slice(0, 8)
+  if (digits.length <= 2) return digits
+  if (digits.length <= 4) return `${digits.slice(0, 2)}/${digits.slice(2)}`
+  return `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`
+}
+
+function setupDateMask(input: HTMLInputElement): void {
+  input.addEventListener('input', () => {
+    input.value = formatDateDigits(input.value)
+  })
+}
+
 function showError(message: string) {
   errEl.textContent = message
   errEl.hidden = false
@@ -860,6 +873,7 @@ form.addEventListener('submit', (e) => {
 
 function init() {
   setupDevPhoneMockToggle()
+  setupDateMask(dateInput)
   const entries = loadEntries()
   updateHistoryPanelVisibility()
   refreshHistorySelect()
