@@ -874,6 +874,7 @@ form.addEventListener('submit', (e) => {
 function init() {
   setupDevPhoneMockToggle()
   setupDateMask(dateInput)
+  setupDateMask(goalDateInput)
   const entries = loadEntries()
   updateHistoryPanelVisibility()
   refreshHistorySelect()
